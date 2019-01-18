@@ -41,7 +41,7 @@ while True:
        
         # esc to cap img
         if cv2.waitKey(1) == 27: 
-            cv2.imwrite('./dataset/right/' + str(counter) + '.png', roi)
+            cv2.imwrite('./dataset/center/' + str(counter) + '.png', roi)
             counter += 1
 
 
