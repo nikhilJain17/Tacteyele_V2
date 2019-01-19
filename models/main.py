@@ -9,6 +9,8 @@ from imutils import face_utils
 import torchvision.transforms as transforms
 import torch
 from model import ConvNet
+import pyautogui
+
 
 cap = cv2.VideoCapture(0)
 fgbg = cv2.createBackgroundSubtractorMOG2()
@@ -42,19 +44,40 @@ while True:
         cv2.imshow("ROI", roi)
        
         # esc to cap img
-        if cv2.waitKey(1) == 27: 
-            cv2.imwrite('./test.png', roi)
-            img = Image.open('./test.png')
-            img = resize(img)
-            img = to_tensor(img)
-            img = img.reshape(1, 3, 140, 250)
+        # if cv2.waitKey(1) == 27: 
+        cv2.imwrite('./test.png', roi)
+        img = Image.open('./test.png')
+        # img = Image.fromarray(roi)
+        img = resize(img)
+        img = to_tensor(img)
+        img = img.reshape(1, 3, 140, 250)
 
-            # run img thru model
-            with torch.no_grad():
-	            output = model.forward(img)
-	            _, predicted = torch.max(output.data, 1)
+        # run img thru model
+        with torch.no_grad():
+            output = model.forward(img)
+            print("\n", output)
+            _, predicted = torch.max(output.data, 1)
 
-	            print("PREDICTED: ", predicted)
+            print("PREDICTED: ", predicted)
+
+            if predicted == 0:
+            	print("Left")
+            	pyautogui.moveRel(-10, 0)
+
+            elif predicted == 1:
+            	print("Up")
+            	pyautogui.moveRel(0, -10)
+
+            elif predicted == 2:
+            	print("Right")
+            	pyautogui.moveRel(10, 0)
+
+            elif predicted == 3:
+            	pyautogui.moveRel(0, 10)
+            	print("Down")
+
+            elif predicted == 4:
+            	print("Center")
 
     cv2.imshow('Image', frame)
 
