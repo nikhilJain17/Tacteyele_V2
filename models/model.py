@@ -2,6 +2,9 @@ import torch
 import torch.nn as nn
 import torchvision
 import torchvision.transforms as transforms
+from matplotlib import pyplot as plt
+import torch.optim as optim
+from torch.autograd import Variable
 
 num_epochs = 10
 num_classes = 5
