@@ -46,11 +46,12 @@ class EyeDataset(Dataset):
 	def __len__(self):
 		return self.data_len
 
+
 # ### TESTING ######
-d = EyeDataset('../classification_data/dataset')
-print(len(d))
-img, label = d.__getitem__(490)
-print(label)
+# d = EyeDataset('../classification_data/dataset/test')
+# print(len(d))
+# img, label = d.__getitem__(40)
+# print(img, label)
 # img.show()
 
 
