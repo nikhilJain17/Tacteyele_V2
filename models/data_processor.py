@@ -25,7 +25,7 @@ class EyeDataset(Dataset):
 		# 0 = left, 1 = up, 2 = right, 3 = down, 4 = center
 		self.names_array = self.left + self.up + self.right + self.down + self.center
 		# print(self.names_array)
-		self.data_len = len(self.left) + len(self.right) + len(self.up) + len(self.down) 
+		self.data_len = len(self.left) + len(self.right) + len(self.up) + len(self.down) + len(self.center)
 
 		# # define transforms
 		self.to_tensor = transforms.ToTensor()

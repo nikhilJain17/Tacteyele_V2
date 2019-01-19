@@ -11,13 +11,13 @@ cap = cv2.VideoCapture(0)
 fgbg = cv2.createBackgroundSubtractorMOG2()
 
 
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+# face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+# eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
-counter = 161
+counter = 46
 while True:
     _, frame = cap.read()
     # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -41,7 +41,7 @@ while True:
        
         # esc to cap img
         if cv2.waitKey(1) == 27: 
-            cv2.imwrite('./dataset/train/down/' + str(counter) + '.png', roi)
+            cv2.imwrite('./dataset/validation/up/' + str(counter) + '.png', roi)
             counter += 1
 
     cv2.imshow('Image', frame)
