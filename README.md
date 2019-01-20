@@ -6,7 +6,12 @@ Tacteyele is a computer vision program that lets you control your computer witho
 
 
 
-You can check out Tacteyele_V1 demo here: https://youtu.be/5IFfr-ggy-8?t=1393 
+You can check out Tacteyele_V1 demo here: https://youtu.be/5IFfr-ggy-8?t=1394
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=5IFfr-ggy-8?t=1393
+" target="_blank"><img src="http://img.youtube.com/vi/5IFfr-ggy-8/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 
 And the (messy) repo here: https://github.com/nikhilJain17/TactEYEle 
 
@@ -18,6 +23,11 @@ After going through Stanford's CS231n course on ConvNets, I decided to revisit t
 
 
 Check out Tacteyele_V2 demo here: https://www.youtube.com/watch?v=QS-aNiqF9N8&feature=youtu.be
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=QS-aNiqF9N8
+" target="_blank"><img src="http://img.youtube.com/vi/QS-aNiqF9N8/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 
 ## II. How's it work?
 #### 1. Data Collection and Dataset 
