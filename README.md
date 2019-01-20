@@ -21,7 +21,7 @@ Check out Tacteyele_V2 demo here: https://www.youtube.com/watch?v=QS-aNiqF9N8&fe
 
 ## II. How's it work?
 #### 1. Data Collection and Dataset 
-I wrote a script (data_generator.py) that loads the webcam video stream, applies the dlib facial points classifier to segment the image, then crops the eyes and saves the image to a folder. \
+I wrote a script (data_generator.py) that loads the webcam video stream, applies the dlib facial points classifier to segment the image, then crops the eyes and saves the image to a folder. 
 
 This way, you can just hold down the `esc` key and save hundreds of photos very quickly. 
 
