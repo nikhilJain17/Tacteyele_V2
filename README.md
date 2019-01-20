@@ -1,23 +1,25 @@
 # Tacteyele_V2
 
-## What is this?
+## I. What is this?
 
 Tacteyele is a computer vision program that lets you control your computer without your hands, just with your eyes. My friends and I made Tacteyele_V1 at PennApps XV, a 36 hour hackathon in senior year of high school, where we won 3rd place. 
 
 
 
 You can check out Tacteyele_V1 demo here: https://youtu.be/5IFfr-ggy-8?t=1393 
+
 And the (messy) repo here: https://github.com/nikhilJain17/TactEYEle 
 
 The initial vision was to look at a part of the screen and have the mouse move there. However, for Tacteyele_V1, we couldn't get that working and instead used head position. You could click by blinking your eye, and type with voice controls. \
 
 
-After going through Stanford's CS231n course on ConvNets, I decided to revisit the eye idea. I wrote a script and built a dataset, then trained a classifier on it for different eye poses. Testing accuracy was around 97%.
+After going through Stanford's CS231n course on ConvNets, I decided to revisit the eye idea. I wrote a script and built a dataset, then trained a classifier on it for different eye poses. Testing accuracy was around 97%. \
+
 
 
 Check out Tacteyele_V2 demo here: https://www.youtube.com/watch?v=QS-aNiqF9N8&feature=youtu.be
 
-## How's it work?
+## II. How's it work?
 #### 1. Data Collection and Dataset \
 I wrote a script (data_generator.py) that loads the webcam video stream, applies the dlib facial points classifier to segment the image, then crops the eyes and saves the image to a folder. \
 
@@ -32,17 +34,17 @@ The optimizer was stochastic gradient descent, with learning rate 0.001, batch s
 This was my first iteration at the classifier. I plan on experimenting with more model architectures, optimizers, transfer learning, etc, in the future.
 
 
-## Installing 
+## III. Installing 
 
 Coming soon!
 
 #### 1. Dependencies
-Pytorch
-OpenCV
-PIL
+Pytorch \
+OpenCV \
+PIL \
 
 
-## What's next?
+## IV. What's next?
 * Improve framerate!
   * Don't save each frame to run through model
 * Smoothen mouse movement!
@@ -54,13 +56,13 @@ PIL
 * Transfer learning on pretrained model
   * Compare results
   
-## File structure
+## V. File structure
 ```
 /classification_data
 |  /dataset                                 --> contains training/testing images
 |    ...
 |  data_generator.py                        --> script to generate training/test images
-|  shape_predictor_68_face_landmarks.dat	  --> dlib face classifier, used to segment eye out of image
+|  shape_predictor_68_face_landmarks.dat	   --> dlib face classifier, used to segment eye out of image
 /experiments                                --> to hold data from future ML experiments
 /models
   data_processor.py                         --> defines custom Pytorch dataset class, preprocesses imgs
