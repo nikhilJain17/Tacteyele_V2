@@ -43,16 +43,16 @@ PIL
 
 
 ## What's next?
-• Improve framerate! \
-  • Don't save each frame to run through model \
-• Smoothen mouse movement! \
-• Add blink to click \
-• Add voice commands \
-• Consider regression based approach \
-  • Instead of classifying direction (left, right, etc), maybe measuring the angle of the gaze vector \
-  • Continuous values for direction could give better UX over discrete direction values \
-• Transfer learning on pretrained model \
-  • Compare results \
+* Improve framerate!
+  * Don't save each frame to run through model
+* Smoothen mouse movement!
+* Add blink to click
+* Add voice commands
+* Consider regression based approach
+  * Instead of classifying direction (left, right, etc), maybe measuring the angle of the gaze vector
+  * Continuous values for direction could give better UX over discrete direction values
+* Transfer learning on pretrained model
+  * Compare results
   
 ## File structure
 ```
