@@ -10,26 +10,26 @@ You can check out Tacteyele_V1 demo here: https://youtu.be/5IFfr-ggy-8?t=1393
 
 And the (messy) repo here: https://github.com/nikhilJain17/TactEYEle 
 
-The initial vision was to look at a part of the screen and have the mouse move there. However, for Tacteyele_V1, we couldn't get that working and instead used head position. You could click by blinking your eye, and type with voice controls. \
+The initial vision was to look at a part of the screen and have the mouse move there. However, for Tacteyele_V1, we couldn't get that working and instead used head position. You could click by blinking your eye, and type with voice controls. 
 
 
-After going through Stanford's CS231n course on ConvNets, I decided to revisit the eye idea. I wrote a script and built a dataset, then trained a classifier on it for different eye poses. Testing accuracy was around 97%. \
+After going through Stanford's CS231n course on ConvNets, I decided to revisit the eye idea. I wrote a script and built a dataset, then trained a classifier on it for different eye poses. Testing accuracy was around 97%. 
 
 
 
 Check out Tacteyele_V2 demo here: https://www.youtube.com/watch?v=QS-aNiqF9N8&feature=youtu.be
 
 ## II. How's it work?
-#### 1. Data Collection and Dataset \
+#### 1. Data Collection and Dataset 
 I wrote a script (data_generator.py) that loads the webcam video stream, applies the dlib facial points classifier to segment the image, then crops the eyes and saves the image to a folder. \
 
-This way, you can just hold down the `esc` key and save hundreds of photos very quickly. \
+This way, you can just hold down the `esc` key and save hundreds of photos very quickly. 
 
 #### 2. Model
 The architecture of the model is as follows:
-[Conv --> ReLU --> MaxPool] => [Conv --> ReLU --> MaxPool] => Fully Connected \
+[Conv --> ReLU --> MaxPool] => [Conv --> ReLU --> MaxPool] => Fully Connected 
 
-The optimizer was stochastic gradient descent, with learning rate 0.001, batch size 10, and momentum 0.9. \
+The optimizer was stochastic gradient descent, with learning rate 0.001, batch size 10, and momentum 0.9. 
 
 This was my first iteration at the classifier. I plan on experimenting with more model architectures, optimizers, transfer learning, etc, in the future.
 
@@ -41,7 +41,7 @@ Coming soon!
 #### 1. Dependencies
 Pytorch \
 OpenCV \
-PIL \
+PIL 
 
 
 ## IV. What's next?
