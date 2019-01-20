@@ -10,7 +10,8 @@ import torchvision.transforms as transforms
 import torch
 from model import ConvNet
 import pyautogui
-
+import autopy
+from math import exp
 
 cap = cv2.VideoCapture(0)
 fgbg = cv2.createBackgroundSubtractorMOG2()
@@ -44,7 +45,11 @@ while True:
         cv2.imshow("ROI", roi)
        
         # esc to cap img
-        # if cv2.waitKey(1) == 27: 
+
+        if cv2.waitKey(1) == 27:
+        	pass
+
+
         cv2.imwrite('./test.png', roi)
         img = Image.open('./test.png')
         # img = Image.fromarray(roi)
@@ -52,34 +57,54 @@ while True:
         img = to_tensor(img)
         img = img.reshape(1, 3, 140, 250)
 
+        results = []
+
         # run img thru model
         with torch.no_grad():
             output = model.forward(img)
-            print("\n", output)
-            _, predicted = torch.max(output.data, 1)
+            print("\n", output.data)
+            value, predicted = torch.max(output.data, 1)
 
-            print("PREDICTED: ", predicted)
+            results_dict = {0: "Left", 1: "Up", 2: "Right", 3: "Down", 4: "Center"}
+
+            print("PREDICTED: ", predicted, results_dict[int(predicted)])
+
+            # movement = value * 10
+            mouse_x, mouse_y = autopy.mouse.location()
+            movement = 20
+
+
+            # resultStr = str(output.data)
+            exp_probs = [exp(prob) for prob in output.data[0]]
+            probs = ['{0:f}'.format(prob / sum(exp_probs)) for prob in exp_probs]
+            results = [results_dict[index] + ": " + str(prob) + "\n" for index, prob in enumerate(probs)]
+
 
             if predicted == 0:
-            	print("Left")
-            	pyautogui.moveRel(-10, 0)
+            	# resultStr = "Left"
+            	autopy.mouse.smooth_move(mouse_x - movement - movement / 2, mouse_y)
 
             elif predicted == 1:
-            	print("Up")
-            	pyautogui.moveRel(0, -10)
+            	# resultStr = "Up"
+            	autopy.mouse.smooth_move(mouse_x, mouse_y - movement)
 
             elif predicted == 2:
-            	print("Right")
-            	pyautogui.moveRel(10, 0)
+            	# resultStr = "Right"
+            	autopy.mouse.smooth_move(mouse_x + movement + movement / 2, mouse_y)
 
             elif predicted == 3:
-            	pyautogui.moveRel(0, 10)
-            	print("Down")
+            	autopy.mouse.smooth_move(mouse_x, mouse_y + movement)
+            	# resultStr = "Down"
 
             elif predicted == 4:
-            	print("Center")
+            	# resultStr = "Center"
+            	pass
 
-    cv2.imshow('Image', frame)
+
+        for i, string in enumerate(results):
+            cv2.putText(gray, string, (100, (i + 1) * 100), cv2.FONT_HERSHEY_PLAIN, 2, (255,0,0), 1)
+
+    cv2.imshow('Image', gray)
 
 cap.release()
 cv2.destroyAllWindows()
